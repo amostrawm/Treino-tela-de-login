@@ -1,5 +1,3 @@
-import time
-
 from PySimpleGUI import PySimpleGUI as sg
 
 

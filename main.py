@@ -11,10 +11,24 @@ layout = [
 
 janela = sg.Window('Login', layout)
 
+
+dbLogin = []
+dbSenha = []
 while True:
     eventos, valores = janela.read()
     if eventos in [sg.WINDOW_CLOSED, 'Fechar']:
         break
+
+    if eventos == 'Novo login':
+        dbLogin.append(valores['usuario'])
+        dbSenha.append(valores['senha'])
+        print(dbLogin, dbSenha)
+
     if eventos == 'Entrar':
-        if valores['usuario'] == 'attom' and valores['senha'] == '123':
-            break
+        if valores['usuario'] in dbLogin:
+            if valores['senha'] in dbSenha:
+                print("Logado com sucesso")
+            else:
+                print("Senha incorreta!")
+        else:
+            print("Login incorreto!")
